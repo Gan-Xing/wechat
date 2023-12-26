@@ -1,0 +1,63 @@
+{
+  "name": "@ganxing/utils",
+  "version": "0.0.3",
+  "description": "A comprehensive collection of personal programming utilities by Gan-Xing.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "unpkg": "dist/index.umd.js",
+  "browser": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "setup": "cp packagedev.json package.json",
+    "turbodev": "cp packageturbodev.json package.json",
+    "generate-packages": "node generate-packages.js",
+    "commit": "git-cz",
+    "test": "jest --coverage",
+    "lint": "eslint 'src/**/*.{ts,tsx}' --no-ignore",
+    "format": "prettier --write 'src/**/*.{ts,tsx}'",
+    "check-format": "prettier --check 'src/**/*.{ts,tsx}'",
+    "clean": "rimraf dist/esm dist/cjs",
+    "docs": "typedoc --out docs src",
+    "prebuild": "pnpm run lint && pnpm run check-format && pnpm run test && pnpm run clean && pnpm run docs",
+    "build": "pnpm run prebuild && webpack"
+  },
+  "keywords": [
+    "ganxing",
+    "typescript",
+    "utils"
+  ],
+  "author": {
+    "name": "Gan-Xing",
+    "email": "gx19942015@hotmail.com",
+    "url": "http://web.ganxing.fun"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gan-Xing/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gan-Xing/utils/issues"
+  },
+  "homepage": "https://github.com/Gan-Xing/utils#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {
+    "axios": "^1.6.2"
+  }
+}
