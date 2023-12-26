@@ -1,13 +1,17 @@
-# Utils
+# Wechat
 
-Welcome to utils, a comprehensive collection of personal programming utilities by Gan-Xing. This project is designed to be a versatile toolkit for various development needs, encompassing testing, linting, formatting, and documentation generation.
+The WeChat SDK by GanXing is a specialized and user-friendly software development kit focused on integrating WeChat Mini-Program functionalities into Node.js applications. Currently, this SDK primarily offers APIs related to WeChat Mini-Programs, enabling developers to easily leverage features such as user authentication, data storage, and server-side logic integration. Designed for efficiency and security, it simplifies interactions with the WeChat Mini-Program API, allowing for the creation of robust and responsive applications.
+
+Looking ahead, the WeChat SDK by GanXing plans to expand its offerings to include APIs for WeChat Pay, WeChat Official Accounts, and Enterprise WeChat, aiming to provide a comprehensive toolkit for a wider range of WeChat services. Whether you're developing interactive mini-programs, planning to integrate WeChat payment systems, or looking to connect with WeChat's vast user base through official accounts, this SDK is set to evolve with your needs, enhancing user engagement and enriching digital experiences on one of the world's largest social media platforms.
+
+The project, housed in the ganxing/wechat repository, represents an evolving effort to bring the expansive world of WeChat services to Node.js developers.
 
 ## Getting Started
 
 1.**Clone the repository**
 
 ```bash
-git clone <https://github.com/Gan-Xing/utils.git>
+git clone <https://github.com/Gan-Xing/wechat.git>
 cd utils
 ```
 
@@ -93,7 +97,7 @@ The generated documentation will be placed in the \`./docs\` directory, which yo
 
 ## Issues and Feedback
 
-For bugs reporting, feature requests or any other feedback, please visit [GitHub Issues](https://github.com/Gan-Xing/utils/issues).
+For bugs reporting, feature requests or any other feedback, please visit [GitHub Issues](https://github.com/Gan-Xing/wechat/issues).
 
 ## License
 
@@ -101,4 +105,4 @@ This project is licensed under the ISC license. For more information, see the [L
 
 ---
 
-Thank you for checking out utils. Happy coding!
+Thank you for checking out wechat. Happy coding!

@@ -7,7 +7,9 @@
   "unpkg": "dist/index.umd.js",
   "browser": "dist/index.umd.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "setup": "cp packagedev.json package.json",
     "turbodev": "cp packageturbodev.json package.json",
@@ -22,7 +24,14 @@
     "prebuild": "pnpm run lint && pnpm run check-format && pnpm run test && pnpm run clean && pnpm run docs",
     "build": "pnpm run prebuild && webpack"
   },
-  "keywords": ["ganxing", "wechat", "services", "node", "nest", "typescript"],
+  "keywords": [
+    "ganxing",
+    "wechat",
+    "services",
+    "node",
+    "nest",
+    "typescript"
+  ],
   "author": {
     "name": "Gan-Xing",
     "email": "gx19942015@hotmail.com",
@@ -54,6 +63,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
+    "@nestjs/common": "^10.0.0",
     "@types/jest": "^29.5.7",
     "@types/node": "^20.10.2",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
@@ -74,6 +84,8 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "axios": "^1.6.2"
+    "axios": "^1.6.2",
+    "crypto-browserify": "^3.12.0",
+    "stream-browserify": "^3.0.0"
   }
 }

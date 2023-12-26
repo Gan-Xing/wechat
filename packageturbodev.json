@@ -1,7 +1,7 @@
 {
-  "name": "@ganxing/utils",
-  "version": "0.0.3",
-  "description": "A comprehensive collection of personal programming utilities by Gan-Xing.",
+  "name": "@ganxing/wechat",
+  "version": "0.0.1",
+  "description": "WeChat SDK by Gan-Xing.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "unpkg": "dist/index.umd.js",
@@ -26,8 +26,11 @@
   },
   "keywords": [
     "ganxing",
-    "typescript",
-    "utils"
+    "wechat",
+    "services",
+    "node",
+    "nest",
+    "typescript"
   ],
   "author": {
     "name": "Gan-Xing",
@@ -37,12 +40,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Gan-Xing/utils.git"
+    "url": "https://github.com/Gan-Xing/wechat.git"
   },
   "bugs": {
-    "url": "https://github.com/Gan-Xing/utils/issues"
+    "url": "https://github.com/Gan-Xing/wechat/issues"
   },
-  "homepage": "https://github.com/Gan-Xing/utils#readme",
+  "homepage": "https://github.com/Gan-Xing/wechat#readme",
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
@@ -58,6 +61,8 @@
     }
   },
   "dependencies": {
-    "axios": "^1.6.2"
+    "axios": "^1.6.2",
+    "crypto-browserify": "^3.12.0",
+    "stream-browserify": "^3.0.0"
   }
 }
