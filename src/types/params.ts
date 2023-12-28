@@ -1,4 +1,4 @@
-declare interface TemplateMessage {
+export declare interface TemplateMessage {
   touser: string;
   template_id: string;
   url?: string;
@@ -7,11 +7,11 @@ declare interface TemplateMessage {
   color?: string;
 }
 
-declare interface TemplateData {
+export declare interface TemplateData {
   [key: string]: { value: string; color?: string };
 }
 
-declare interface SubmitAuditItem {
+export declare interface SubmitAuditItem {
   /**
    * 小程序的页面，可通过获取小程序的页面列表接口获得
    */
@@ -50,7 +50,7 @@ declare interface SubmitAuditItem {
   title?: string;
 }
 
-declare interface SubmitAuditItemList {
+export declare interface SubmitAuditItemList {
   /**
    * 审核项列表
    */
@@ -62,7 +62,7 @@ declare interface SubmitAuditItemList {
   ugc_declare?: object;
 }
 
-declare interface ParamRegisterWeApp {
+export declare interface ParamRegisterWeApp {
   /**
    * 企业名（需与工商部门登记信息一致）
    * 如果是“无主体名称个体工商户”则填“个体户+法人姓名”，例如“个体户张三”
@@ -93,7 +93,7 @@ declare interface ParamRegisterWeApp {
 /**
  * 创建二维码参数
  */
-declare interface ParamCreateQRCode {
+export declare interface ParamCreateQRCode {
   scene: string;
   page?: string;
   check_path?: boolean;
@@ -104,7 +104,7 @@ declare interface ParamCreateQRCode {
   is_hyaline?: boolean;
 }
 
-declare interface AccountCreateQRCode {
+export declare interface AccountCreateQRCode {
   /** 该二维码有效时间，以秒为单位。 最大不超过2592000（即30天），此字段如果不填，则默认有效期为60秒。*/
   expire_seconds?: number;
   /** 二维码类型，QR_SCENE为临时的整型参数值，QR_STR_SCENE为临时的字符串参数值，QR_LIMIT_SCENE为永久的整型参数值，QR_LIMIT_STR_SCENE为永久的字符串参数值 */
@@ -125,13 +125,13 @@ declare interface AccountCreateQRCode {
   };
 }
 
-declare interface LineColor {
+export declare interface LineColor {
   r: number | string;
   g: number | string;
   b: number | string;
 }
 
-declare interface QRCode {
+export declare interface QRCode {
   path: string;
   width?: number;
   auto_color?: boolean;
@@ -139,7 +139,7 @@ declare interface QRCode {
   is_hyaline?: boolean;
 }
 
-declare interface CreateQRCode {
+export declare interface CreateQRCode {
   path: string;
   width?: number;
 }
@@ -147,7 +147,7 @@ declare interface CreateQRCode {
 /**
  * 获取不限制的小程序码参数
  */
-declare interface GetUnlimitedQRCode {
+export declare interface GetUnlimitedQRCode {
   scene: string;
   page?: string;
   check_path?: boolean;
@@ -158,7 +158,7 @@ declare interface GetUnlimitedQRCode {
   is_hyaline?: boolean;
 }
 
-declare interface JumpTarget {
+export declare interface JumpTarget {
   /**
    * 通过 scheme 码进入的小程序页面路径，必须是已经发布的小程序存在的页面，不可携带 query。path 为空时会跳转小程序主页。
    */
@@ -177,7 +177,7 @@ declare interface JumpTarget {
 /**
  * 获取 scheme 码参数
  */
-declare interface GenerateScheme {
+export declare interface GenerateScheme {
   jump_wxa?: JumpTarget;
   is_expire?: boolean;
   expire_time?: number;
@@ -188,7 +188,7 @@ declare interface GenerateScheme {
 /**
  * 获取 NFC scheme 码参数
  */
-declare interface GenerateNFCScheme {
+export declare interface GenerateNFCScheme {
   jump_wxa?: JumpTarget;
   model_id: string;
   sn?: string;
@@ -197,7 +197,7 @@ declare interface GenerateNFCScheme {
 /**
  * 获取 URL Link参数
  */
-declare interface GenerateUrlLink {
+export declare interface GenerateUrlLink {
   path?: string;
   query?: string;
   is_expire?: boolean;
@@ -207,7 +207,7 @@ declare interface GenerateUrlLink {
   env_version?: string;
 }
 
-declare interface GenerateShortLink {
+export declare interface GenerateShortLink {
   /**
    * 通过 Short Link 进入的小程序页面路径，必须是已经发布的小程序存在的页面，可携带 query，最大1024个字符
    */
@@ -225,7 +225,7 @@ declare interface GenerateShortLink {
 /**
  * 小程序模板消息
  */
-declare interface WeAppTemplateMsg {
+export declare interface WeAppTemplateMsg {
   /**
    * 小程序模板ID
    */
@@ -251,7 +251,7 @@ declare interface WeAppTemplateMsg {
 /**
  * 公众号模板消息
  */
-declare interface MpTemplateMsg {
+export declare interface MpTemplateMsg {
   /**
    * 公众号appid，要求与小程序有绑定且同主体
    */
@@ -274,7 +274,7 @@ declare interface MpTemplateMsg {
   data: string;
 }
 
-declare interface SendUniformMessage {
+export declare interface SendUniformMessage {
   /**
    * 用户openid，可以是小程序的openid，也可以是mp_template_msg.appid对应的公众号的openid
    */
@@ -289,7 +289,7 @@ declare interface SendUniformMessage {
   mp_template_msg: string;
 }
 
-declare interface CreateActivityId {
+export declare interface CreateActivityId {
   /**
    * 为私密消息创建activity_id时，指定分享者为 unionid 用户。其余用户不能用此activity_id分享私密消息。openid与 unionid 填一个即可。私密消息暂不支持云函数生成activity id。
    */
@@ -300,12 +300,12 @@ declare interface CreateActivityId {
   openid?: string;
 }
 
-declare interface UpdatableMsgParameterList {
+export declare interface UpdatableMsgParameterList {
   name: "member_count" | "room_limit";
   value: string;
 }
 
-declare interface UpdatableMsg {
+export declare interface UpdatableMsg {
   activity_id: string;
   target_state: 0 | 1;
   template_info: {
@@ -313,7 +313,7 @@ declare interface UpdatableMsg {
   };
 }
 
-declare interface PubTemplateTitleList {
+export declare interface PubTemplateTitleList {
   /**
    * 类目 id，多个用逗号隔开
    */
@@ -328,7 +328,7 @@ declare interface PubTemplateTitleList {
   limit: number;
 }
 
-declare interface SendMessage {
+export declare interface SendMessage {
   /**
    * 所需下发的订阅模板id
    */
@@ -355,7 +355,7 @@ declare interface SendMessage {
   lang: string;
 }
 
-declare interface MessageTemplate {
+export declare interface MessageTemplate {
   /**
    * 模板标题 id，可通过接口获取，也可登录小程序后台查看获取
    */
@@ -370,7 +370,7 @@ declare interface MessageTemplate {
   sceneDesc: string;
 }
 
-declare interface ExpressLocalSenderOrReveiver {
+export declare interface ExpressLocalSenderOrReveiver {
   /**
    * 姓名，最长不超过256个字符
    */
@@ -404,7 +404,7 @@ declare interface ExpressLocalSenderOrReveiver {
    */
   coordinate_type?: number;
 }
-declare interface ExpressLocalCargo {
+export declare interface ExpressLocalCargo {
   /**
    * 货物价格，单位为元，精确到小数点后两位（如果小数点后位数多于两位，则四舍五入保留两位小数），范围为(0-5000]
    */
@@ -464,7 +464,7 @@ declare interface ExpressLocalCargo {
     cargo_second_class: string;
   };
 }
-declare interface ExpressLocalOrderInfo {
+export declare interface ExpressLocalOrderInfo {
   /**
    * 配送服务代码 不同配送公司自定义, 顺丰和达达不填
    */
@@ -534,7 +534,7 @@ declare interface ExpressLocalOrderInfo {
    */
   expected_pick_time?: number;
 }
-declare interface ExpressLocalShop {
+export declare interface ExpressLocalShop {
   /**
    * 商家小程序的路径，建议为订单页面
    */
@@ -569,7 +569,7 @@ declare interface ExpressLocalShop {
     goods_img_url: string;
   }[];
 }
-declare interface ExpressLocalPreAddOrder {
+export declare interface ExpressLocalPreAddOrder {
   /**
    * 商家id， 由配送公司分配的appkey
    */
@@ -617,7 +617,7 @@ declare interface ExpressLocalPreAddOrder {
   order_sequence?: string;
 }
 
-declare interface ExpressLocalPreCancelOrder {
+export declare interface ExpressLocalPreCancelOrder {
   shopid: string;
   shop_order_id: string;
   delivery_id: string;
@@ -628,7 +628,7 @@ declare interface ExpressLocalPreCancelOrder {
   devery_sign: string;
 }
 
-declare interface ExpressLocalGetLocalOrder {
+export declare interface ExpressLocalGetLocalOrder {
   /**
    * 商家id， 由配送公司分配的appkey
    */
@@ -647,7 +647,7 @@ declare interface ExpressLocalGetLocalOrder {
   devery_sign: string;
 }
 
-declare interface ExpressLocalAbnormalConfirm {
+export declare interface ExpressLocalAbnormalConfirm {
   /**
    * 商家id，由配送公司分配的appkey
    */
@@ -674,7 +674,7 @@ declare interface ExpressLocalAbnormalConfirm {
   remark?: string;
 }
 
-declare interface ExpressLocalCancelOrder {
+export declare interface ExpressLocalCancelOrder {
   /**
    * 商家id， 由配送公司分配的appkey
    */
@@ -709,7 +709,7 @@ declare interface ExpressLocalCancelOrder {
   delivery_sign: string;
 }
 
-declare interface ExpressLocalAddTips {
+export declare interface ExpressLocalAddTips {
   /**
    * 商家id， 由配送公司分配的appkey
    */
@@ -740,7 +740,7 @@ declare interface ExpressLocalAddTips {
   delivery_sign: string;
 }
 
-declare interface ExpressLocalAddLocalOrder {
+export declare interface ExpressLocalAddLocalOrder {
   /**
    * 商家id，由配送公司分配的appkey
    */

@@ -1,3 +1,46 @@
+import {
+  WeChatModuleOptions,
+  AccessTokenResult,
+  RidInfo,
+  DefaultRequestResult,
+  SessionResult,
+  PhoneNumberResult,
+  QRCode,
+  ParamCreateQRCode,
+  GetUnlimitedQRCode,
+  CreateQRCode,
+  SchemeInfo,
+  SchemeQuota,
+  GenerateScheme,
+  GenerateNFCScheme,
+  GenerateUrlLink,
+  UrlLinkResult,
+  GenerateShortLink,
+  SendUniformMessage,
+  CreateActivityId,
+  ActivityIdResult,
+  UpdatableMsg,
+  PubTemplateKeyWords,
+  PubTemplateTitleList,
+  PubTemplateTitleListResult,
+  MessageTemplateListResult,
+  SendMessage,
+  MessageTemplate,
+  ExpressLocalPreAddOrder,
+  ExpressLocalPreAddOrderResult,
+  ExpressLocalGetBindAccountResult,
+  ExpressLocalPreCancelOrder,
+  ExpressLocalPreCancelOrderResult,
+  ExpressLocalCancelOrder,
+  ExpressLocalCancelOrderResult,
+  ExpressLocalGetLocalOrder,
+  ExpressLocalGetLocalOrderResult,
+  ExpressLocalAbnormalConfirm,
+  ExpressLocalResult,
+  ExpressLocalAddTips,
+  ExpressLocalAddLocalOrder,
+  ExpressLocalAddLocalOrderResult,
+} from "@/types";
 import axios, { AxiosRequestConfig } from "axios";
 export class MiniProgramService {
   constructor(private options: WeChatModuleOptions) {}
@@ -7,20 +50,35 @@ export class MiniProgramService {
    *
    * 获取小程序全局唯一后台接口调用凭据，token有效期为7200s，开发者需要进行妥善保存。
    *
-   * @param appId
+   * @param appid
    * @param secret
    * @returns
    */
-  public getAccessToken(appId?: string, secret?: string) {
-    if (!appId || !secret) {
-      appId = this.options?.appId;
-      secret = this.options?.secret;
+  public async getAccessToken(appid?: string, secret?: string) {
+    // 默认使用类中的 appid 和 secret，除非提供了参数
+    appid = appid || this.options?.appid;
+    secret = secret || this.options?.secret;
+
+    if (!appid || !secret) {
+      throw new Error("AppID and Secret are required to get access token");
     }
+
     const url = "https://api.weixin.qq.com/cgi-bin/token";
-    // eslint-disable-next-line camelcase
-    return axios.get<AccessTokenResult>(url, {
-      params: { grant_type: "client_credential", appid: appId, secret },
-    });
+
+    try {
+      const response = await axios.get(url, {
+        params: {
+          grant_type: "client_credential",
+          appid: appid,
+          secret: secret,
+        },
+      });
+      return response; // 返回响应数据
+    } catch (error) {
+      // 处理错误
+      console.error("Error fetching access token:", error);
+      throw error; // 或者返回错误信息
+    }
   }
 
   /**
@@ -68,7 +126,7 @@ export class MiniProgramService {
     secret?: string,
   ): Promise<SessionResult> {
     if (!appId || !secret) {
-      appId = this.options?.appId;
+      appId = this.options?.appid;
       secret = this.options?.secret;
     }
 

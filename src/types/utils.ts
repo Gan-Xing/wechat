@@ -4,7 +4,7 @@
  * cache interface, please implement this interface if you need.
  *
  */
-declare interface ICache {
+export declare interface ICache {
   get<T>(key: string): Promise<T>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   set(key: string, value: any, ttl?: number): void;

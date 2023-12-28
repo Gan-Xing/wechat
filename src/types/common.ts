@@ -1,6 +1,33 @@
 import { ModuleMetadata } from "@nestjs/common";
 
 /**
+ * WeChatModule 配置项
+ * WeChatModule Options
+ */
+export interface WeChatModuleOptions {
+  isGlobal?: boolean;
+  /**
+   * 微信公众号/小程序APP ID
+   * WeChat/MiniProgram official account APP ID
+   */
+  appid: string;
+  /**
+   * 微信公众号secret
+   * WeChat/MiniProgram official account secret
+   */
+  secret: string;
+  /**
+   * 微信公众号服务器Token
+   * WeChat official account Cloud Token
+   */
+  token?: string;
+  /**
+   * 微信公众号服务器EncodingAESKey
+   * WeChat official account Cloud EncodingAESKey
+   */
+  encodingAESKey?: string;
+}
+/**
  * Represents a type which requires at least one of the specified keys.
  * This is useful for creating types where you need to ensure that at least one of several properties is provided.
  *
@@ -12,7 +39,7 @@ import { ModuleMetadata } from "@nestjs/common";
  * @typeParam T - The base type.
  * @typeParam Keys - The keys of T that are required.
  */
-declare type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<
+export declare type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<
   T,
   Exclude<keyof T, Keys>
 > &
@@ -32,7 +59,7 @@ declare type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<
  * @typeParam T - The base type.
  * @typeParam Keys - The keys of T where only one is required.
  */
-declare type RequireOnlyOne<T, Keys extends keyof T = keyof T> = Pick<
+export declare type RequireOnlyOne<T, Keys extends keyof T = keyof T> = Pick<
   T,
   Exclude<keyof T, Keys>
 > &
@@ -44,7 +71,7 @@ declare type RequireOnlyOne<T, Keys extends keyof T = keyof T> = Pick<
 /**
  * Options for configuring the WeChatComponentModule.
  */
-declare interface ComponentModuleOptions {
+export declare interface ComponentModuleOptions {
   /**
    * Specifies if the module should be globally available in your Nest application.
    */
@@ -79,7 +106,7 @@ declare interface ComponentModuleOptions {
 /**
  * Root options for the WeChatModule, extended from ModuleMetadata imports.
  */
-declare interface WeChatModuleRootOptions
+export declare interface WeChatModuleRootOptions
   extends Pick<ModuleMetadata, "imports"> {
   /**
    * A factory function that returns either a Promise of WeChatModuleOptions or WeChatModuleOptions directly.
@@ -102,7 +129,7 @@ declare interface WeChatModuleRootOptions
 /**
  * Root options for the ComponentModule, extended from ModuleMetadata imports.
  */
-declare interface ComponentModuleRootOptions
+export declare interface ComponentModuleRootOptions
   extends Pick<ModuleMetadata, "imports"> {
   /**
    * A factory function that returns either a Promise of ComponentModuleOptions or ComponentModuleOptions directly.
@@ -125,7 +152,7 @@ declare interface ComponentModuleRootOptions
 /**
  * Represents the result returned when requesting an access token for a WeChat official account.
  */
-declare interface AccountAccessTokenResult {
+export declare interface AccountAccessTokenResult {
   /**
    * The obtained access token.
    */
@@ -150,7 +177,7 @@ declare interface AccountAccessTokenResult {
 /**
  * Represents the result of a JS-SDK signature operation.
  */
-declare interface SignatureResult {
+export declare interface SignatureResult {
   /**
    * The App ID of the official account.
    */

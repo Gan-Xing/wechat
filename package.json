@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "WeChat SDK by Gan-Xing.",
   "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.es.js",
   "unpkg": "dist/index.umd.js",
   "browser": "dist/index.umd.js",
   "types": "dist/index.d.ts",
@@ -12,8 +12,7 @@
   ],
   "scripts": {
     "setup": "cp packagedev.json package.json",
-    "turbodev": "cp packageturbodev.json package.json",
-    "generate-packages": "node generate-packages.js",
+    "init": "node generate-packages.js && cp packageturbodev.json package.json",
     "commit": "git-cz",
     "test": "jest --coverage",
     "lint": "eslint 'src/**/*.{ts,tsx}' --no-ignore",
@@ -22,7 +21,7 @@
     "clean": "rimraf dist/esm dist/cjs",
     "docs": "typedoc --out docs src",
     "prebuild": "pnpm run lint && pnpm run check-format && pnpm run test && pnpm run clean && pnpm run docs",
-    "build": "pnpm run prebuild && webpack"
+    "build": "pnpm run prebuild && vite build"
   },
   "keywords": [
     "ganxing",
@@ -80,12 +79,9 @@
     "ts-loader": "^9.5.1",
     "typedoc": "^0.25.3",
     "typescript": "^5.3.3",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4"
+    "vite": "^4.5.0"
   },
   "dependencies": {
-    "axios": "^1.6.2",
-    "crypto-browserify": "^3.12.0",
-    "stream-browserify": "^3.0.0"
+    "axios": "^1.6.2"
   }
 }

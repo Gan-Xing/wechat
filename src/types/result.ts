@@ -1,4 +1,4 @@
-declare interface DefaultRequestResult {
+export declare interface DefaultRequestResult {
   errcode: number;
   errmsg: string;
 }
@@ -9,7 +9,7 @@ declare interface DefaultRequestResult {
  * Result of get access_token which is use by user auth.
  *
  */
-declare interface UserAccessTokenResult {
+export declare interface UserAccessTokenResult {
   /**
    * access_token
    */
@@ -52,7 +52,7 @@ declare interface UserAccessTokenResult {
  *
  * Result of get ticket
  */
-declare interface TicketResult {
+export declare interface TicketResult {
   /**
    * 返回代码，正确结果是0
    *
@@ -83,7 +83,7 @@ declare interface TicketResult {
  *
  * Result of auth.code2Session
  */
-declare interface SessionResult {
+export declare interface SessionResult {
   /**
    * 用户唯一标识
    */
@@ -111,7 +111,7 @@ declare interface SessionResult {
 /**
  * 使用授权码获取授权信息授回结果
  */
-declare interface AuthorizationResult {
+export declare interface AuthorizationResult {
   /**
    * 授权信息
    */
@@ -142,7 +142,7 @@ declare interface AuthorizationResult {
 /**
  * 获取授权帐号详情返回结果
  */
-declare interface AuthorizerInfo {
+export declare interface AuthorizerInfo {
   /**
    * 详见小程序帐号信息
    */
@@ -207,7 +207,7 @@ declare interface AuthorizerInfo {
 /**
  * 已授权的帐号列表
  */
-declare interface AuthorizerListResult {
+export declare interface AuthorizerListResult {
   /**
    * 授权的帐号总数
    */
@@ -231,7 +231,7 @@ declare interface AuthorizerListResult {
 /**
  * 获取手机号码返回结果
  */
-declare interface PhoneNumberResult extends DefaultRequestResult {
+export declare interface PhoneNumberResult extends DefaultRequestResult {
   /**
    * 用户手机号信息
    */
@@ -267,7 +267,8 @@ declare interface PhoneNumberResult extends DefaultRequestResult {
 /**
  * 生成带参数的二维码
  */
-declare interface AccountCreateQRCodeResult extends DefaultRequestResult {
+export declare interface AccountCreateQRCodeResult
+  extends DefaultRequestResult {
   /** 获取的二维码ticket，凭借此ticket可以在有效时间内换取二维码。 */
   ticket: string;
   /** 该二维码有效时间，以秒为单位。 最大不超过2592000（即30天）。 */
@@ -284,7 +285,7 @@ declare interface AccountCreateQRCodeResult extends DefaultRequestResult {
  * + 40001 invalid credential  access_token isinvalid or not latest	获取 access_token 时 AppSecret 错误，或者 access_token 无效。请开发者认真比对 AppSecret 的正确性，或查看是否正在为恰当的公众号调用接口
  * + 40013 invalid appid	不合法的 AppID ，请开发者检查 AppID 的正确性，避免异常字符，注意大小写
  */
-declare interface AccessTokenResult extends DefaultRequestResult {
+export declare interface AccessTokenResult extends DefaultRequestResult {
   /**
    * 获取到的凭证
    */
@@ -298,7 +299,7 @@ declare interface AccessTokenResult extends DefaultRequestResult {
 /**
  * rid请求详情
  */
-declare interface RequestInfo {
+export declare interface RequestInfo {
   /**
    * 发起请求的时间戳
    */
@@ -328,14 +329,14 @@ declare interface RequestInfo {
 /**
  * 微信接口调用rid查询
  */
-declare interface RidInfo extends DefaultRequestResult {
+export declare interface RidInfo extends DefaultRequestResult {
   /**
    * 该 rid 对应的请求详情
    */
   request: RequestInfo;
 }
 
-declare interface SchemeInfo {
+export declare interface SchemeInfo {
   /**
    * 小程序 appid
    */
@@ -362,7 +363,7 @@ declare interface SchemeInfo {
   env_version: string;
 }
 
-declare interface SchemeQuota {
+export declare interface SchemeQuota {
   /**
    * 长期有效 scheme 已生成次数
    */
@@ -373,7 +374,7 @@ declare interface SchemeQuota {
   long_time_limit: number;
 }
 
-declare interface UrlLinkInfo {
+export declare interface UrlLinkInfo {
   appid: string;
   path: string;
   query: string;
@@ -382,7 +383,7 @@ declare interface UrlLinkInfo {
   env_version: string;
 }
 
-declare interface UrlLinkQuota {
+export declare interface UrlLinkQuota {
   /**
    * 长期有效 url_link 已生成次数
    */
@@ -393,13 +394,13 @@ declare interface UrlLinkQuota {
   long_time_limit: number;
 }
 
-declare interface UrlLinkResult extends DefaultRequestResult {
+export declare interface UrlLinkResult extends DefaultRequestResult {
   url_link_info: UrlLinkInfo;
   url_link_quota: UrlLinkQuota;
   visit_openid: string;
 }
 
-declare interface ActivityIdResult extends DefaultRequestResult {
+export declare interface ActivityIdResult extends DefaultRequestResult {
   /**
    * 动态消息的 ID
    */
@@ -410,7 +411,7 @@ declare interface ActivityIdResult extends DefaultRequestResult {
   expiration_time: number;
 }
 
-declare interface PubTemplateKeyWords extends DefaultRequestResult {
+export declare interface PubTemplateKeyWords extends DefaultRequestResult {
   /**
    * 模版标题列表总数
    */
@@ -435,7 +436,8 @@ declare interface PubTemplateKeyWords extends DefaultRequestResult {
   }[];
 }
 
-declare interface PubTemplateTitleListResult extends DefaultRequestResult {
+export declare interface PubTemplateTitleListResult
+  extends DefaultRequestResult {
   /**
    * 模版标题列表总数
    */
@@ -463,7 +465,8 @@ declare interface PubTemplateTitleListResult extends DefaultRequestResult {
   }[];
 }
 
-declare interface MessageTemplateListResult extends DefaultRequestResult {
+export declare interface MessageTemplateListResult
+  extends DefaultRequestResult {
   data: {
     /**
      * 添加至帐号下的模板 id，发送小程序订阅消息时所需
@@ -501,7 +504,7 @@ declare interface MessageTemplateListResult extends DefaultRequestResult {
   }[];
 }
 
-declare interface ExpressLocalResult {
+export declare interface ExpressLocalResult {
   /**
    * 运力返回的错误码
    */
@@ -512,7 +515,8 @@ declare interface ExpressLocalResult {
   resultmsg: string;
 }
 
-declare interface ExpressLocalPreAddOrderResult extends ExpressLocalResult {
+export declare interface ExpressLocalPreAddOrderResult
+  extends ExpressLocalResult {
   /**
    * 实际运费(单位：元)，运费减去优惠券费用
    */
@@ -547,7 +551,8 @@ declare interface ExpressLocalPreAddOrderResult extends ExpressLocalResult {
   dispatch_duration: number;
 }
 
-declare interface ExpressLocalGetBindAccountResult extends ExpressLocalResult {
+export declare interface ExpressLocalGetBindAccountResult
+  extends ExpressLocalResult {
   /**
    * 绑定的商家签约账号列表
    */
@@ -561,7 +566,8 @@ declare interface ExpressLocalGetBindAccountResult extends ExpressLocalResult {
   }[];
 }
 
-declare interface ExpressLocalPreCancelOrderResult extends ExpressLocalResult {
+export declare interface ExpressLocalPreCancelOrderResult
+  extends ExpressLocalResult {
   /**
    * 预计扣除的违约金(单位：元)，精确到分
    */
@@ -572,7 +578,8 @@ declare interface ExpressLocalPreCancelOrderResult extends ExpressLocalResult {
   desc: string;
 }
 
-declare interface ExpressLocalGetLocalOrderResult extends ExpressLocalResult {
+export declare interface ExpressLocalGetLocalOrderResult
+  extends ExpressLocalResult {
   /**
    * 配送状态 [详见](https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/industry/immediate-delivery/order_status.html)
    */
@@ -603,7 +610,8 @@ declare interface ExpressLocalGetLocalOrderResult extends ExpressLocalResult {
   reach_time?: number;
 }
 
-declare interface ExpressLocalCancelOrderResult extends ExpressLocalResult {
+export declare interface ExpressLocalCancelOrderResult
+  extends ExpressLocalResult {
   /**
    * 实际扣除的违约金(单位：元)，精确到分
    */
@@ -614,7 +622,8 @@ declare interface ExpressLocalCancelOrderResult extends ExpressLocalResult {
   desc: string;
 }
 
-declare interface ExpressLocalAddLocalOrderResult extends ExpressLocalResult {
+export declare interface ExpressLocalAddLocalOrderResult
+  extends ExpressLocalResult {
   /**
    * 实际运费(单位：元)，运费减去优惠券费用
    */

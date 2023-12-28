@@ -1,8 +1,142 @@
 /**
+ * 交易状态
+ */
+export enum TradeStatus {
+  /**
+   * 支付成功
+   */
+  SUCCESS = "SUCCESS",
+  /**
+   * 转入退款
+   */
+  REFUND = "REFUND",
+  /**
+   * 未支付
+   */
+  NOTPAY = "NOTPAY",
+  /**
+   * 已关闭
+   */
+  CLOSED = "CLOSED",
+  /**
+   * 已撤销（仅付款码支付会返回）
+   */
+  REVOKED = "REVOKED",
+  /**
+   * 用户支付中（仅付款码支付会返回）
+   */
+  USERPAYIN = "USERPAYIN",
+  /**
+   * 支付失败（仅付款码支付会返回）
+   */
+  PAYERROR = "PAYERROR",
+}
+
+/**
+ * 交易类型
+ */
+export enum TradeType {
+  /**
+   * 公从号支付
+   */
+  JSAPI = "JSAPI",
+  /**
+   * 扫码支付
+   */
+  NATIVE = "NATIVE",
+  /**
+   * APP支付
+   */
+  APP = "APP",
+  /**
+   * 付款码支付
+   */
+  MICROPAY = "MICROPAY",
+  /**
+   * H5支付
+   */
+  MWEB = "MWEB",
+  /**
+   * 刷脸支付
+   */
+  FACEPAY = "FACEPAY",
+}
+
+/**
+ * 退款状态
+ */
+export enum RefundStatus {
+  /**
+   * 退款成功
+   */
+  SUCCESS = "SUCCESS",
+  /**
+   * 退款关闭
+   */
+  CLOSED = "CLOSED",
+  /**
+   * 退款处理中
+   */
+  PROCESSING = "PROCESSING",
+  /**
+   * 退款异常
+   */
+  ABNORMAL = "ABNORMAL",
+}
+
+/**
+ * 资金账户
+ */
+export enum FundsAccount {
+  /**
+   * 未结算资金
+   */
+  UNSETTLED = "UNSETTLED",
+  /**
+   * 可用余额
+   */
+  AVAILABLE = "AVAILABLE",
+  /**
+   * 不可用余额
+   */
+  UNAVAILABLE = "UNAVAILABLE",
+  /**
+   * 运营户
+   */
+  OPERATION = "OPERATION",
+  /**
+   * 基本账户（含可用余额和不可用余额）
+   */
+  BASIC = "BASIC",
+}
+
+/**
+ * 退款渠道
+ */
+export enum RefundChannel {
+  /**
+   * 原路退款
+   */
+  ORIGINAL = "ORIGINAL",
+  /**
+   * 退回到余额
+   */
+  BALANCE = "BALANCE",
+  /**
+   * 原账户异常退到其他余额账户
+   */
+  OTHER_BALANCE = "OTHER_BALANCE",
+  /**
+   * 原银行卡异常退到其他银行卡
+   */
+  OTHER_BANKCARD = "OTHER_BANKCARD",
+}
+
+/**
  * 微信支付下单数据结构
  * WePay Transaction Order Data
  */
-declare interface TransactionOrder {
+export declare interface TransactionOrder {
   /**
    * 应用ID
    * 长度32
@@ -164,7 +298,7 @@ declare interface TransactionOrder {
   };
 }
 
-declare interface MiniProgramPaymentParameters {
+export declare interface MiniProgramPaymentParameters {
   /**
    * 时间戳，单位：秒（10位数字）
    */
@@ -185,7 +319,7 @@ declare interface MiniProgramPaymentParameters {
   paySign: string;
 }
 
-declare interface CallbackResource {
+export declare interface CallbackResource {
   original_type: string;
   algorithm: string;
   ciphertext: string;
@@ -193,7 +327,7 @@ declare interface CallbackResource {
   nonce: string;
 }
 
-declare interface CertificateResult {
+export declare interface CertificateResult {
   serial_no: string;
   effective_time: string;
   expire_time: string;
@@ -208,7 +342,7 @@ declare interface CertificateResult {
 /**
  * 微信支付订单
  */
-declare interface Trade
+export declare interface Trade
   extends Omit<TransactionOrder, "scene_info" | "amount"> {
   /**
    * 微信支付订单号
@@ -319,7 +453,7 @@ declare interface Trade
   };
 }
 
-declare interface TradeGood {
+export declare interface TradeGood {
   /**
    * 商品编码
    */
@@ -345,7 +479,7 @@ declare interface TradeGood {
 /**
  * 申请退款参数
  */
-declare interface RefundParameters {
+export declare interface RefundParameters {
   /**
    * 微信支付订单号
    */
@@ -407,7 +541,7 @@ declare interface RefundParameters {
   goods_detail?: RefundGoodDetail[];
 }
 
-declare interface RefundGoodDetail {
+export declare interface RefundGoodDetail {
   /**
    * 商户侧商品编码
    */
@@ -431,7 +565,7 @@ declare interface RefundGoodDetail {
   refund_quantity: number;
 }
 
-declare interface RefundResult {
+export declare interface RefundResult {
   /**
    * 微信支付退款单号
    */
@@ -561,7 +695,7 @@ declare interface RefundResult {
   }[];
 }
 
-declare interface RefundNotifyResult {
+export declare interface RefundNotifyResult {
   mchid: string;
   out_trade_no: string;
   transaction_id: string;
@@ -583,14 +717,14 @@ declare interface RefundNotifyResult {
 /**
  * 配置开发选项
  */
-declare interface DevelopmentConfigRequest {
+export declare interface DevelopmentConfigRequest {
   /** 商户回调地址 **/
   callback_url: string;
   /** 全部账单展示开发票入口开关 **/
   show_fapiao_cell?: boolean;
 }
 
-declare interface CustomCell {
+export declare interface CustomCell {
   /** 【cell位文字】 展示在卡券详情页自定义cell位上的文字 */
   words: string;
   /** 【cell位描述】 展示在卡券详情页自定义cell位右侧的描述 */
@@ -603,7 +737,7 @@ declare interface CustomCell {
   miniprogram_path?: string;
 }
 
-declare interface CardTemplateInfo {
+export declare interface CardTemplateInfo {
   /** 收款方名称】 收款方名称，显示在电子发票卡券信息中，若不传则默认取商户名称  **/
   payee_name?: string;
   /** 【卡券logo地址】 卡券logo地址，请参考 */
@@ -612,24 +746,24 @@ declare interface CardTemplateInfo {
   custom_cell?: CustomCell;
 }
 
-declare interface CreateCardTemplateRequest {
+export declare interface CreateCardTemplateRequest {
   /** 【插卡公众号AppID】 插卡公众号AppID。若是服务商模式，则可以是服务商申请的AppId，也可以是子商户申请的AppId；若是直连模式，则是直连商户申请的AppId */
   card_appid: string;
   card_template_information: CardTemplateInfo;
 }
 
-declare interface CreateCardTemplateResponse {
+export declare interface CreateCardTemplateResponse {
   card_appid: string;
   card_id: string;
 }
 
-declare interface FapiaoNotifyResult {
+export declare interface FapiaoNotifyResult {
   mchid: string;
   fapiao_apply_id: string;
   apply_time: string;
 }
 
-declare interface UserTitleEntity {
+export declare interface UserTitleEntity {
   /** 【购买方类型】 购买方类型， INDIVIDUAL: 个人, ORGANIZATION: 单位 */
   type: "INDIVIDUAL" | "ORGANIZATION";
   /** 【名称】 购买方名称 */
@@ -650,15 +784,15 @@ declare interface UserTitleEntity {
   email?: string;
 }
 
-declare type TAX_PREFER_MARK =
+export declare type TAX_PREFER_MARK =
   | "NO_FAVORABLE"
   | "OUTSIDE_VAT"
   | "VAT_EXEMPT"
   | "NORMAL_ZERO_RATED"
-  | "declare_ZERO_RATED";
-declare type FAPIAO_SCENE = "WITH_WECHATPAY" | "WITHOUT_WECHATPAY";
+  | "export declare_ZERO_RATED";
+export declare type FAPIAO_SCENE = "WITH_WECHATPAY" | "WITHOUT_WECHATPAY";
 
-declare interface IssueItem {
+export declare interface IssueItem {
   /** 【税局侧规定的货物或应税劳务、服务税收分类编码】 税局侧规定的货物或应税劳务、服务税收分类编码。可自行指定符合税务部门规定的货物或应税劳务、服务编码；若使用在电子发票商户平台配置的商品类型，需要从接口【获取商户可开具的商品和服务税收分类编码对照表】获得商户已配置的编码；若该行为折扣行，必须与被折扣行的编码相同。 */
   tax_code: string;
   /**
@@ -699,14 +833,14 @@ declare interface IssueItem {
    * + OUTSIDE_VAT: 不征税
    * + VAT_EXEMPT: 免税
    * + NORMAL_ZERO_RATED: 普通零税率
-   * + declare_ZERO_RATED: 出口零税率
+   * + export declare_ZERO_RATED: 出口零税率
    */
   tax_prefer_mark?: TAX_PREFER_MARK;
   /** 【是否折扣行】 指定该发票行是否折扣行，折扣行必须是被折扣行的下一行 */
   discount: boolean;
 }
 
-declare interface IssueFapiaoInfo {
+export declare interface IssueFapiaoInfo {
   /** 【商户发票单号】 商户发票单号，唯一标识一张要开具的发票。只能是字母、数字、中划线-、下划线_、竖线|、星号*这些英文半角字符，且该单号在每个商户下必须唯一 */
   fapiao_id: string;
   /** 【总价税合计】 总价税合计，所有发票行单行金额合计的累加，展示在发票的价税合计处，单位：分 注意：若是微信支付后开票，所有发票的总价税合计之和不能超过对应的微信支付单总金额；若是非微信支付开票，所有发票的总价税合计之和不能超过【获取用户授权链接】接口中指定的总金额 */
@@ -719,7 +853,7 @@ declare interface IssueFapiaoInfo {
   items: IssueItem[];
 }
 
-declare interface IssueFapiaoRequest {
+export declare interface IssueFapiaoRequest {
   /** 【开票场景】 开票场景， WITH_WECHATPAY: 微信支付场景， WITHOUT_WECHATPAY: 非微信支付场景 */
   scene: FAPIAO_SCENE;
   /** 【发票申请单号】 发票申请单号，唯一标识一次开票行为。当开票场景为WITHOUT_WECHATPAY时，为调用【获取用户授权链接】接口时指定的发票申请单号；当开票场景为WITH_WECHATPAY时，为与本次开票关联的微信支付订单号，且必须是属于相应商户的订单（服务商模式下该订单必须属于子商户；直连模式下该订单必须属于直连商户） */
@@ -730,12 +864,12 @@ declare interface IssueFapiaoRequest {
   fapiao_information: IssueFapiaoInfo[];
 }
 
-declare interface GetUserTitleParams {
+export declare interface GetUserTitleParams {
   fapiao_apply_id: string;
   scene: FAPIAO_SCENE;
 }
 
-declare interface FapiaoItem {
+export declare interface FapiaoItem {
   tax_code: string;
   goods_name: string;
   specification?: string;
@@ -749,13 +883,13 @@ declare interface FapiaoItem {
   tax_prefer_mark: TAX_PREFER_MARK;
   discount: boolean;
 }
-declare interface ExtraInformation {
+export declare interface ExtraInformation {
   payee: string;
   reviewer: string;
   drawer: string;
 }
 
-declare interface SellerInfo {
+export declare interface SellerInfo {
   name: string;
   taxpayer_id: string;
   address: string;
@@ -763,7 +897,7 @@ declare interface SellerInfo {
   bank_name?: string;
   bank_account?: string;
 }
-declare interface CardInfo {
+export declare interface CardInfo {
   card_appid: string;
   card_openid: string;
   card_id?: string;
@@ -775,7 +909,7 @@ declare interface CardInfo {
     | "DISCARDED";
 }
 
-declare interface FapiaoInfo {
+export declare interface FapiaoInfo {
   fapiao_code: string;
   fapiao_number: string;
   check_code: string;
@@ -783,7 +917,7 @@ declare interface FapiaoInfo {
   fapiao_time: string;
 }
 
-declare interface FapiaoEntity {
+export declare interface FapiaoEntity {
   fapiao_id: string;
   status: "ISSUE_ACCEPTED" | "ISSUED" | "REVERSE_ACCEPTED" | "REVERSED";
   blue_fapiao: FapiaoInfo;
@@ -800,18 +934,18 @@ declare interface FapiaoEntity {
   remark?: string;
 }
 
-declare interface GetIssueFapiaoResponse {
+export declare interface GetIssueFapiaoResponse {
   total_count: number;
   fapiao_information: FapiaoEntity[];
 }
 
-declare interface ReverseFapiaoInfo {
+export declare interface ReverseFapiaoInfo {
   fapiao_id: string;
   fapiao_code: string;
   fapiao_number: string;
 }
 
-declare interface ReverseFapiaoRequest {
+export declare interface ReverseFapiaoRequest {
   reverse_reason: string;
   fapiao_information?: ReverseFapiaoInfo[];
 }
@@ -820,7 +954,7 @@ declare interface ReverseFapiaoRequest {
 
 /** 现金红包 **/
 
-declare interface RedPackData {
+export declare interface RedPackData {
   billNO: string;
   sendName: string;
   recipientOpenId: string;
@@ -856,7 +990,7 @@ declare interface RedPackData {
   riskInfo?: string;
 }
 
-declare interface GroupRedPackData extends RedPackData {
+export declare interface GroupRedPackData extends RedPackData {
   amtType: "ALL_RAND";
 }
 
